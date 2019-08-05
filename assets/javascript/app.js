@@ -71,6 +71,26 @@
 // maybe this goes in a game object but not sure
 $(document).ready(function(){
 
+
+  // firebase
+
+
+
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD6to2Bb1RFSl4vdAnEP5ifb70xrLDZrDU",
+    authDomain: "rockpaperscissorlizardsp-393e9.firebaseapp.com",
+    databaseURL: "https://rockpaperscissorlizardsp-393e9.firebaseio.com",
+    projectId: "rockpaperscissorlizardsp-393e9",
+    storageBucket: "",
+    messagingSenderId: "157845538465",
+    appId: "1:157845538465:web:1323a3fecbac83cb"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+
+
   // how many Gifs to retrieve
   var howManyGifs = 10;
 

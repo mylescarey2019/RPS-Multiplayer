@@ -12,15 +12,15 @@ This page was created using HTML, CSS, Bootstrap, Javascript, JQuery and Firebas
 
 Instruction modal:
 
-![Gif-U-Break-Instructions](assets/images/wireframe1.png)
+![RPSLK-Instructions](assets/images/wireframe1.png)
 
 Gif page:
 
-![Gif-U-Break-page](assets/images/wireframe1b.png)
+![RPSLK-page](assets/images/wireframe1b.png)
 
 Mobile - showing collapsable menu:
 
-![Gif-U-Break-mobil](assets/images/wireframe-mobil.png)
+![RPSLK-mobil](assets/images/wireframe-mobil.png)
 
 ## Getting Started
 
@@ -36,7 +36,15 @@ Mobile - showing collapsable menu:
 
 * open in browser and follow instructions
 *   1. enter player name
-    2. TBD
+    2. wait for your opponent to sign on
+    3. follow prompts/messages in central message box
+    4. when your turn click button choice - rules below
+        1. Rock  - crushes Lizard, crushes Scissors
+        2. Paper - covers Rock, disproves Spock
+        3. Scissors - cuts Paper, decapitates Lizard
+        4. Lizard - poisons Spock, eats Paper
+        5. Spock - smashes Scissors, vaporizes Rock
+    5. click Instructions button in header bar for modal with instuctions    
 
     
 

@@ -2,6 +2,34 @@
 RPSLK - CSS
 --------------------------------------------------------- */
 
+
+
+#name-input {
+  width: 100px;
+}
+
+
+body {
+
+  width: 100%;
+  min-width: 320px;  
+  height: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 56px;
+}
+
+#set-name-btn {
+  margin-right: 10px
+}
+
+.card:not:first-of-type {
+  margin-left: 20px;
+}
+
+h3, .card-title {
+  text-align: center;
+}
 /* #search-input {
   width: 120px;
 }
@@ -23,18 +51,7 @@ RPSLK - CSS
 }
 
 
-body {
-  background-image: url(../images/david-emrich-odII8BzuWU8-unsplash.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-origin: center;
-  width: 100%;
-  min-width: 320px;  
-  height: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 56px;
-}
+
 
 .slide-window-show {
   visibility: visible;
