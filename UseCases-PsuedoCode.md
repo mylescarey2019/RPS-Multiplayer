@@ -13,7 +13,8 @@ of Rock Paper Scissors Lizard Spock, a variation on the classic Rock-Paper-Sciss
 ## Requirement Note
 
 Intend to leverage Bootstrap due to need for more practice and desire to make responsive.
-Intend to use local storage to make application data persist for user
+User Firebase for player move information/communications between players browsers.
+Timer usage for delay after showing result.
 
 
 ## User Stories / Use Cases
@@ -23,54 +24,86 @@ Intend to use local storage to make application data persist for user
     for more details.
 
 1.  page loads for the user
-    1. page has header bar with title on left, right side has dropdown for saved searches, search text input box
-       and clear search button
-    2. dropdown box will be populated with any saved searches (from local storage)
-    3. instruction messsage is shown
-    4. gif display is empty (or maybe i will decide to load firt search - TBD)
+    1. Header bar has title name entry box with "name" as placeholder and start button
+    2. Body has three boxes, left is for player 1, right is for player 2, middle is for results
+    3. left and right boxes show 'waiting for your opponent', 'waiting for your opponent'
+
+2.  user enters name presses start
+    1. if no name entered do not accept start click 
+    2. entry box / start button are hidden and greeting Hello player name shown in central message banner
+    3. left box shows header with player name 
+    4. left box shows footer with win/loss count
+
+3.  second user enters name and presses start
+    1. if no name entered do not accept start click
+    2. entry box / start button are hidden and greeting Hello player name is shown in central message banner
+    3. right box now shows the second players information on both sessions
     
-2.  user selects a saved search term from dropdown box
-    1. dipslay loads with gifs for the selected term
-    2. display allows user to scroll (if using carousle
+4.  both players signed in 
+    1. first player sees - "it is your turn" in central message banner
+    2. second player sees - "waiting for player 1 name to choose in central message banner
+    3. player one sees button group in their box - with Rock, Paper, Scissors, Lizard, Spock
 
-3.  user enters search term in search input box/clicks search
-    1. term is used to search for gifs 
-    2. if none found - display message
-    3. if found then add term to the dropdown list and update the locally storage saved list
-    4. display found gifs 
+5.  player one chooses a button
+    1. button group clears
+    2. message changes on player one to read 'waiting for player 2 name to choose' in central message banner
 
-4.  user clicks Clear Search button
-    1. remove all entries from the dropdown list
-    2. clear the local stored saved list
-    3. clear the gif display
+6.  player two 
+    1. sees button group and message it is your turn
+    2. chooses a button
+
+7.  results computed
+    0. central message banner is cleared
+    1. player one box shows choice
+    2. player two box shows choice
+    3. middle result box says player name that won or tie
+    4. win-loss-tie counts are updated on left and right boxes
+    5. timer starts and runs for 2-3 seconds
+    6. repeat steps 4 thru 7 
+
+8.  player closes browswer
+    1. detect windows close event
+    2. alter other player game over player name has left - show message in central message banner
+
 
 ### Psuedo Code - notes
 
 1. Global
     1. Variables
+        1. TBD
+        2. Firebase key/values
+            1. player one name
+            2. player two name
+            3. player one choice
+            4. player two choice
+            5. player one wins
+            6. player two wins
+            7. ties
     2. Functions
+        1. TBD
 
 2. Objects/Classes
-    1. Terms (static object)
+    1. userInterface (static object)
         1. Properties
-            1. search term array
+            1. TBD
         2. Methods
-            1. add term
-            2. clear terms
-            3. save to local storage
-            4. clear from local storage
-            5. load from local storage
-    2. User Interface (static object)
+            1. hide entry box/start button
+            2. update player header
+            3. update player footer
+            4. show / hide player button bank
+            5. show / hide player message box content
+            2. update cental message banner 
+
+    2. manageFirebase (static object)
         1. Properties
-            1. instruction message
-            2. non gifs found message
-            3. clear search term message
+            1. TBD
         2. Methods
-            1. display message
-            2. clear gif display
-            3. load git display
+            1. set term
+            2. clear term
+
 
 3. Events/Listeners/Timers
-    1. on click for dropdown control
-    2. on click for search term box
-    3. on click for clear search button           
+    1. on click for start button
+    2. on click for button bank
+    3. timer for result reveal read time  
+    4. event for window close       

@@ -1,4 +1,4 @@
-# Rock Paper Scissors Lizard Spock - Multplayer game
+# Rock Paper Scissors Lizard Spock - Multiplayer game
 
 RPSLK - Multiplayer
 
