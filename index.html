@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- Bootstrap CSS -->
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+        <!-- page .css -->
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+        <!-- Local -->
+        <!-- Latest compiled and minified CSS -->
+        <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
+        <!-- page .css -->
+        <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+
+    <title>Gif-U-Break</title>
+  </head>
+  <body>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+      <!-- Local -->
+      <!--Latest JQuery download -->
+      <!-- <script src="assets/javascript/jquery-3.4.1.js"></script> -->
+      <!-- Popper -->
+      <!-- <script src="assets/javascript/popper.min.js"></script> -->
+      <!-- Latest compiled and minified JavaScript -->
+      <!-- <script src="assets/javascript/bootstrap.min.js"></script> -->
+
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Gif-Break</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Saved Searches
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <!-- <a class="dropdown-item active" data-value="cats" href="#">cats</a>
+              <a class="dropdown-item" data-value="anteaters" href="#">anteaters</a>
+              <a class="dropdown-item" data-value="whales" href="#">whales</a> -->
+            </div>
+          </li>
+          <li class="nav-item">
+            <button id="clear-btn" class="btn btn-outline-warning my-2 my-sm-0" type="button">Clear</button>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="search for" aria-label="Search">
+          <button id="search-btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div id="slide-window" class="col-sm-12">  
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+            <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false"> -->
+  
+              <!-- <div id="gif-div"> -->
+                <!-- <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="assets/images/cat01.gif" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="assets/images/cat02.gif" class="d-block w-100" alt="...">
+                  </div> 
+                  <div class="carousel-item">
+                    <img src="assets/images/cat03.gif" class="d-block w-100" alt="...">
+                  </div>
+                </div> -->
+              <!-- </div> -->
+              <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+        </div>
+      </div>
+      <div id="my-modal" class="modal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Welcome to Gif-Break</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>To find Gifs use the search control <img src="assets/images/searchbox.png" alt='search control'> to enter a term, such as 'cat', then click 'Search'</p>
+                <p>Ten Gifs will be retrieved. Use the left/right arrows <img src="assets/images/arrows.png" alt="next gif arrow control"> on the Gif to move to the previous/next Gif.</p>
+                <p>Search terms are saved and can be re-selected using the drop-down list <img src="assets/images/search.png" alt="saved search control"></p>
+                <p>Click clear button <img src="assets/images/clear.png" alt="clear button"> to remove all saved searches.</p>
+                <p>For small devices the control can be shown/hidden using the expand button <img src="assets/images/burger.png" alt="expand control"></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <footer id="footer-bar" class="navbar fixed-bottom navbar-light bg-dark">
+          <img id="giphy-logo" src="assets/images/PoweredBy_200px-Black_HorizLogo.png" alt="powered by giphy">
+          <span id="footer-text" class="navbar-text">
+              photo by
+              <a style="background-color:#3d444b;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont,
+              &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, 
+              Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" 
+              href="https://unsplash.com/@otoriii?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" 
+              target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from David Emrich">
+              <span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg"
+                style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><
+                title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path>
+               </svg></span><span style="display:inline-block;padding:2px 3px">David Emrich</span></a>
+          </span>
+        </footer>
+  
+
+    <!-- Main program body in javascript -->
+    <script src="assets/javascript/app.js"></script>
+
+  </body>
+</div>
+
+</html>

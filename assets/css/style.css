@@ -1,0 +1,77 @@
+/* ---------------------------------------------------------
+RPSLK - CSS
+--------------------------------------------------------- */
+
+/* #search-input {
+  width: 120px;
+}
+
+.dropdown-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: scroll;
+}
+
+
+.container { 
+  width: 80%;
+  height: auto;
+  max-width: 500px;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+body {
+  background-image: url(../images/david-emrich-odII8BzuWU8-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: center;
+  width: 100%;
+  min-width: 320px;  
+  height: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 56px;
+}
+
+.slide-window-show {
+  visibility: visible;
+  border: solid 2px white;
+  padding: 0px;
+}
+
+.slide-window-hide {
+  visibility: hidden;
+  border: none; 
+}
+
+#footer-text {
+  color: #ffffff;
+  font-size: 10px; 
+} */
+
+/* First breakpoint - these rules take effect at maximum browser's width
+   of 575px */
+   /* @media screen and (max-width: 575px) {
+  
+    #search-input {
+      margin-right: 10px;
+    }
+
+    #giphy-logo {
+      width: 150px;
+      height: 20px;
+    }
+
+    #footer-text {
+      font-size: 8px;
+    }
+
+    #footer-bar {
+      padding: 8px 4px;
+    }
+}
+   */
+
