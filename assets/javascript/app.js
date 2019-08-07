@@ -99,7 +99,7 @@ $(document).ready(function(){
   // '.info/connected' is a boolean value, true if the client is connected and false if they are not.
   var connectedRef = database.ref(".info/connected");
 
-  var intermissionTimeConstant = 60;
+  var intermissionTimeConstant = 5;
   var intermissionTime = intermissionTimeConstant;
 
   
@@ -124,7 +124,7 @@ $(document).ready(function(){
 
   // decrement the question countdown timer
   function intermissionIntervalCountdown() {
-    // console.log("intermission timer decrement: " + intermissionTime);
+    console.log("intermission timer decrement: " + intermissionTime);
     // decrement time by 1
     intermissionTime--;
     //  time expired
@@ -166,63 +166,107 @@ $(document).ready(function(){
       var result = '';
       var resultDesc = ''
       // evaluate resuls from player 1 perspective
+      console.log("player1: ",this.playerChoice1);
+      console.log("player2: ",this.playerChoice2);
+      
+      
       if (this.playerChoice1 === "rock" && this.playerChoice2 === "scissors") {
         result = "win";
-        resultDesc = "crushes"
+        resultDesc = "crushes";
+      }
+      else if (this.playerChoice1 === "rock" && this.playerChoice2 === "lizard") {
+        result = "win";
+        resultDesc = "crushes";
       }
       else if (this.playerChoice1 === "paper" && this.playerChoice2 === "rock") {
         result = "win";
-        resultDesc = "covers"
+        resultDesc = "covers";
       }
-      else if (this.playerChoice1 === "scissors" && this.playerChoice2 === "paper") {
+      else if (this.playerChoice1 === "paper" && this.playerChoice2 ==  "spock") {
         result = "win";
-        resultDesc = "cuts"
+        resultDesc = "disproves";
       }
-      else if (this.playerChoice1 === "spock" && this.playerChoice2 ==  "rock") {
+      else if (this.playerChoice1 === "scissors" && this.playerChoice2 ==  "paper") {
         result = "win";
-        resultDesc = "vaporizes"
+        resultDesc = "cuts";
       }
-      else if (this.playerChoice1 === "spock" && this.playerChoice2 ==  "scissors") {
+      else if (this.playerChoice1 === "scissors" && this.playerChoice2 ==  "lizard") {
         result = "win";
-        resultDesc = "crushes"
+        resultDesc = "decapitates";
       }
       else if (this.playerChoice1 === "lizard" && this.playerChoice2 ==  "spock") {
         result = "win";
         resultDesc = "poisons"
       }
-      else if (this.playerChoice1 === "lizard" && this.playerChoice2 ==  "paper") {
+      else if (this.playerChoice1 === "lizard" && this.playerChoice2 === "paper") {
         result = "win";
         resultDesc = "eats"
       }
-      else if (this.playerChoice1 === "scissors" && this.playerChoice2 === "rock") {
-        result = "lose";
-        resultDesc = "crushed by"
+      else if (this.playerChoice1 === "spock" && this.playerChoice2 === "scissors") {
+        result = "win";
+        resultDesc = "smashes"
       }
-      else if (this.playerChoice1 === "rock" && this.playerChoice2 === "paper") {
-        result = "lose";
-        resultDesc = "covered by"
+      else if (this.playerChoice1 === "spock" && this.playerChoice2 === "rock") {
+        result = "win";
+        resultDesc = "vaporizes"
       }
-      else if (this.playerChoice1 === "paper" && this.playerChoice2 === "scissors") {
-        result = "lose";
-        resultDesc = "cut by"
-      }
+
+
       else if (this.playerChoice1 === "rock" && this.playerChoice2 ==  "spock") {
-        result = "lose";
+        result = "loss";
         resultDesc = "vaporized by"
       }
-      else if (this.playerChoice1 === "scissors" && this.playerChoice2 ==  "rock") {
-        result = "lose";
-        resultDesc = "crushed by"
+      else if (this.playerChoice1 === "rock" && this.playerChoice2 ==  "paper") {
+        result = "loss";
+        resultDesc = "covered by"
       }
-      else if (this.playerChoice1 === "spock" && this.playerChoice2 ==  "lizard") {
-        result = "lose";
-        resultDesc = "poisoned by"
+
+
+
+      else if (this.playerChoice1 === "paper" && this.playerChoice2 ==  "scissors") {
+        result = "loss";
+        resultDesc = "cut by"
       }
       else if (this.playerChoice1 === "paper" && this.playerChoice2 ==  "lizard") {
-        result = "lose";
+        result = "loss";
         resultDesc = "eaten by"
       }
-      else if (this.playerLosses1 === this.playerChoice2) {
+
+
+
+      else if (this.playerChoice1 === "scissors" && this.playerChoice2 ==  "rock") {
+        result = "loss";
+        resultDesc = "crushed by"
+      }
+      else if (this.playerChoice1 === "scissors" && this.playerChoice2 ==  "spock") {
+        result = "loss";
+        resultDesc = "smashed by"
+      }
+
+
+
+      else if (this.playerChoice1 === "lizard" && this.playerChoice2 ==  "scissors") {
+        result = "loss";
+        resultDesc = "decapited by"
+      }
+      else if (this.playerChoice1 === "lizard" && this.playerChoice2 ==  "rock") {
+        result = "loss";
+        resultDesc = "crushed by"
+      }
+
+
+
+      else if (this.playerChoice1 === "spock" && this.playerChoice2 ==  "paper") {
+        result = "loss";
+        resultDesc = "disproven by"
+      }
+      else if (this.playerChoice1 === "spock" && this.playerChoice2 ==  "lizard") {
+        result = "loss";
+        resultDesc = "poisoned by"
+      } 
+
+
+      else if (this.playerChoice1 === this.playerChoice2) {
         result = "tie";
         resultDesc = "ties"
       };
@@ -240,35 +284,59 @@ $(document).ready(function(){
       userInterface.hideChoices();
       $("#left-container-2").text(this.playerChoice1);
       $("#right-container-2").text(this.playerChoice2);
-      var resultTurn = '';
       switch (this.currentTurnResult) {
         case "win": { 
+          console.log("in WIN");
+          
           this.playerWins1++;
           this.playerLosses2++;
           $("#left-card-top").addClass("win-state");
           $("#right-card-top").addClass("loss-state");
+          $("#left-container-2").addClass("win-state-2");
+          $("#right-container-2").addClass("loss-state-2");
         }
           break;
           
         case "tie": {
+          console.log("in TIE");
+          
           this.playerTies++;
           $("#left-card-top").addClass("tie-state");
           $("#right-card-top").addClass("tie-state");
+          $("#left-container-2").addClass("tie-state-2");
+          $("#right-container-2").addClass("tie-state-2");
         }
           break;
           
         case "loss": {
+          console.log("in LOSS");
           this.playerLosses1++;
           this.playerWins2++;
           $("#left-card-top").addClass("loss-state");
           $("#right-card-top").addClass("win-state");
+          $("#left-container-2").addClass("loss-state-2");
+          $("#right-container-2").addClass("win-state-2");
         }
           break;
 
         default:
           break;
       };
-      $("#turn-result").text(this.currentTurnResultDesc);
+      console.log("this current turn result desc: ",this.currentTurnResultDesc);
+      
+      $("#results").text(this.currentTurnResultDesc);
+      console.log("player 1 stat W-L-T " + this.playerWins1 + " " + this.playerLosses1 + " " + this.playerTies);
+      console.log("player 2 stat W-L-T " + this.playerWins2 + " " + this.playerLosses2 + " " + this.playerTies);  
+      var scorePlayer1 = "Wins: " + this.playerWins1 + "   Losses: " + this.playerLosses1 + "   Ties: " + this.playerTies;
+      if (game.youArePlayer === 1) {
+        var scorePlayer1 = "Wins: " + this.playerWins1 + "   Losses: " + this.playerLosses1 + "   Ties: " + this.playerTies;
+        $("#left-score").text(scorePlayer1);
+      }
+      else {
+        var scorePlayer2 = "Wins: " + this.playerWins2 + "   Losses: " + this.playerLosses2 + "   Ties: " + this.playerTies;
+        $("#right-score").text(scorePlayer2);
+      }
+
       startIntermissionCountdown();
 
     },
@@ -286,6 +354,12 @@ $(document).ready(function(){
       $("#right-card-top").removeClass("win-state");
       $("#right-card-top").removeClass("loss-state");
       $("#right-card-top").removeClass("tie-state");
+      $("#left-container-2").removeClass("win-state-2");
+      $("#left-container-2").removeClass("loss-state-2");
+      $("#left-container-2").removeClass("tie-state-2");
+      $("#right-container-2").removeClass("win-state-2");
+      $("#right-container-2").removeClass("loss-state-2");
+      $("#right-container-2").removeClass("tie-state-2");
 
       // clear choices from database
       var firebaseChoice1 = database.ref("/choice1");
@@ -294,11 +368,11 @@ $(document).ready(function(){
       firebaseChoice2.remove();
       if (game.youArePlayer === 1) {
         userInterface.leftChoices();
-        $("#right-container-2").text();
+        $("#right-container-2").text("");
       }
       else {
         userInterface.rightChoices();
-        $("#left-container-2").text();
+        $("#left-container-2").text("");
       }
     }
   }

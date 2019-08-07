@@ -46,21 +46,33 @@ h3, .card-title {
 }
 
 .win-state {
-  background-color: lightgreen;
-  color: red;
-}
-
-.loss-state {
-  background-color: lightcoral;
   color: green;
 }
 
-.tie-state {
-  background-color: lightblue;
-  color: blue;
+.loss-state {
+  color: red;
 }
 
+.tie-state {
+  color: lightblue;
+}
 
+.win-state-2 {
+ background-color: lightgreen;
+}
+
+.loss-state-2 {
+  background-color: lightcoral;
+}
+
+.tie-state-2 {
+  background-color: lightblue;
+}
+
+#left-score, #right-score {
+  text-align: center;
+  
+}
 .card-bottom {
   border-top: 2px solid lightgray;
 }
