@@ -70,16 +70,16 @@ Timer usage for delay after showing result.
 
 1. Global
     1. Variables
-        1. TBD
-        2. Firebase key/values
-            0. game state
+        1. game state
+        2. player one wins
+        3. player two wins
+        4. ties
+        5. Firebase key/values
             1. player one name
             2. player two name
             3. player one choice
             4. player two choice
-            5. player one wins
-            6. player two wins
-            7. ties
+
     2. Functions
         1. TBD
 

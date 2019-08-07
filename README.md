@@ -10,17 +10,14 @@ of Rock Paper Scissors Lizard Spock, a variation on the classic Rock-Paper-Sciss
 
 This page was created using HTML, CSS, Bootstrap, Javascript, JQuery and Firebase.
 
-Instruction modal:
+Waiting for players to connect:
 
-![RPSLK-Instructions](assets/images/wireframe1.png)
+![RPSLK-connect](assets/images/wireframe1.png)
 
-Gif page:
+Results revealed:
 
-![RPSLK-page](assets/images/wireframe1b.png)
+![RPSLK-result](assets/images/wireframe2.png)
 
-Mobile - showing collapsable menu:
-
-![RPSLK-mobil](assets/images/wireframe-mobil.png)
 
 ## Getting Started
 
