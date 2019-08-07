@@ -99,13 +99,40 @@ $(document).ready(function(){
   // '.info/connected' is a boolean value, true if the client is connected and false if they are not.
   var connectedRef = database.ref(".info/connected");
 
-
+  var intermissionTimeConstant = 60;
+  var intermissionTime = intermissionTimeConstant;
 
   
 
   // ---------------------------------------------------------
-  // Global objects
+  // Global functions
   // ---------------------------------------------------------
+
+  // start the intermission countdown timer
+  function startIntermissionCountdown() {
+    console.log("in global.startIntermissionCountdown");
+      intermissionTime = intermissionTimeConstant;
+      intermissionIntervalId = setInterval(intermissionIntervalCountdown, 1000);
+  }
+  
+  // stop the intermission countdown timer
+  function stopIntermissionCountdown() {
+    console.log("in global.stopIntermissionCountdown");
+    clearInterval(intermissionIntervalId);
+    game.resetTurn()
+  }
+
+  // decrement the question countdown timer
+  function intermissionIntervalCountdown() {
+    // console.log("intermission timer decrement: " + intermissionTime);
+    // decrement time by 1
+    intermissionTime--;
+    //  time expired
+    if (intermissionTime === 0) {
+      stopIntermissionCountdown() 
+    }
+  } 
+  
 
 
   // ---------------------------------------------------------
@@ -126,10 +153,154 @@ $(document).ready(function(){
     playerLosses1: 0,
     playerLosses2: 0,
     playerTies: 0,
+    currentTurnResult: "",
+    currentTurnResultDesc: "",
 
   
     // methods
+
+    // determine results
+    resultEngine: function() {
+      console.log("in game.resultEngine");
+      // local
+      var result = '';
+      var resultDesc = ''
+      // evaluate resuls from player 1 perspective
+      if (this.playerChoice1 === "rock" && this.playerChoice2 === "scissors") {
+        result = "win";
+        resultDesc = "crushes"
+      }
+      else if (this.playerChoice1 === "paper" && this.playerChoice2 === "rock") {
+        result = "win";
+        resultDesc = "covers"
+      }
+      else if (this.playerChoice1 === "scissors" && this.playerChoice2 === "paper") {
+        result = "win";
+        resultDesc = "cuts"
+      }
+      else if (this.playerChoice1 === "spock" && this.playerChoice2 ==  "rock") {
+        result = "win";
+        resultDesc = "vaporizes"
+      }
+      else if (this.playerChoice1 === "spock" && this.playerChoice2 ==  "scissors") {
+        result = "win";
+        resultDesc = "crushes"
+      }
+      else if (this.playerChoice1 === "lizard" && this.playerChoice2 ==  "spock") {
+        result = "win";
+        resultDesc = "poisons"
+      }
+      else if (this.playerChoice1 === "lizard" && this.playerChoice2 ==  "paper") {
+        result = "win";
+        resultDesc = "eats"
+      }
+      else if (this.playerChoice1 === "scissors" && this.playerChoice2 === "rock") {
+        result = "lose";
+        resultDesc = "crushed by"
+      }
+      else if (this.playerChoice1 === "rock" && this.playerChoice2 === "paper") {
+        result = "lose";
+        resultDesc = "covered by"
+      }
+      else if (this.playerChoice1 === "paper" && this.playerChoice2 === "scissors") {
+        result = "lose";
+        resultDesc = "cut by"
+      }
+      else if (this.playerChoice1 === "rock" && this.playerChoice2 ==  "spock") {
+        result = "lose";
+        resultDesc = "vaporized by"
+      }
+      else if (this.playerChoice1 === "scissors" && this.playerChoice2 ==  "rock") {
+        result = "lose";
+        resultDesc = "crushed by"
+      }
+      else if (this.playerChoice1 === "spock" && this.playerChoice2 ==  "lizard") {
+        result = "lose";
+        resultDesc = "poisoned by"
+      }
+      else if (this.playerChoice1 === "paper" && this.playerChoice2 ==  "lizard") {
+        result = "lose";
+        resultDesc = "eaten by"
+      }
+      else if (this.playerLosses1 === this.playerChoice2) {
+        result = "tie";
+        resultDesc = "ties"
+      };
+      this.currentTurnResult = result;
+      this.currentTurnResultDesc = resultDesc;
+      console.log("Player 1 result is a: ", this.currentTurnResult);
+      console.log("Player 1 result desc is: ", this.currentTurnResultDesc);
+    },
+
+    // reveal results
+    revealEngine: function() {
+      console.log("in game.revealEngine");
+      this.resultEngine();
     
+      userInterface.hideChoices();
+      $("#left-container-2").text(this.playerChoice1);
+      $("#right-container-2").text(this.playerChoice2);
+      var resultTurn = '';
+      switch (this.currentTurnResult) {
+        case "win": { 
+          this.playerWins1++;
+          this.playerLosses2++;
+          $("#left-card-top").addClass("win-state");
+          $("#right-card-top").addClass("loss-state");
+        }
+          break;
+          
+        case "tie": {
+          this.playerTies++;
+          $("#left-card-top").addClass("tie-state");
+          $("#right-card-top").addClass("tie-state");
+        }
+          break;
+          
+        case "loss": {
+          this.playerLosses1++;
+          this.playerWins2++;
+          $("#left-card-top").addClass("loss-state");
+          $("#right-card-top").addClass("win-state");
+        }
+          break;
+
+        default:
+          break;
+      };
+      $("#turn-result").text(this.currentTurnResultDesc);
+      startIntermissionCountdown();
+
+    },
+
+    // reset turn 
+    resetTurn: function() {
+      console.log("in game.resetTurn");
+      // clear the player choices
+      game.playerChoice1 = "";
+      game.playerChoice2 = "";
+      $("#results").text("Play Again");
+      $("#left-card-top").removeClass("win-state");
+      $("#left-card-top").removeClass("loss-state");
+      $("#left-card-top").removeClass("tie-state");
+      $("#right-card-top").removeClass("win-state");
+      $("#right-card-top").removeClass("loss-state");
+      $("#right-card-top").removeClass("tie-state");
+
+      // clear choices from database
+      var firebaseChoice1 = database.ref("/choice1");
+      firebaseChoice1.remove();
+      var firebaseChoice2 = database.ref("/choice2");
+      firebaseChoice2.remove();
+      if (game.youArePlayer === 1) {
+        userInterface.leftChoices();
+        $("#right-container-2").text();
+      }
+      else {
+        userInterface.rightChoices();
+        $("#left-container-2").text();
+      }
+    }
   }
 
   // user interface object
@@ -271,8 +442,6 @@ $(document).ready(function(){
       };
     };
 
-
-
   });
 
 
@@ -302,20 +471,79 @@ $(document).ready(function(){
 
   // instruction button event - show modal
   $("#instruction-btn").on("click",function() {
-    console.log("in global.insturction-btn click event")
-   // clear the variable
-   var firebaseGame = database.ref("/game");
-   firebaseGame.remove();
+    console.log("in global.instruction-btn click event")
    // show insructions
     $('#my-modal').modal('show');
   });
 
+  // clear button event 
+  $("#clear-btn").on("click",function() {
+    console.log("in global.clear-btn click event")
+   // clear the variables
+   var firebaseGame = database.ref("/game");
+   firebaseGame.remove();
+   var firebaseChoice1 = database.ref("/choice1");
+   firebaseChoice1.remove();
+   var firebaseChoice2 = database.ref("/choice2");
+   firebaseChoice2.remove();
+  });
+
+
+  // get firebase snapshot on initial load and when database changes
+  database.ref("/choice1").on("value", function (snap) {
+    console.log("in global.database ref /choice 1 value event");
+    console.log(snap.val());
+    // if exists
+    if (snap.child("playerChoice1").exists()) {
+      // local logging of the result
+      game.playerChoice1 = snap.val().playerChoice1;
+      console.log("player 1 choice is: ", game.playerChoice1);
+      console.log("Opposite choice is: ", game.playerChoice2);
+      if (game.playerChoice2 !== '') {
+        console.log("ready to compute results");
+        game.revealEngine();
+        
+      }
+    } 
+  });
+
+  // get firebase snapshot on initial load and when database changes
+  database.ref("/choice2").on("value", function (snap) {
+    console.log("in global.database ref /choice 2 value event");
+    console.log(snap.val());
+    // if exists
+    if (snap.child("playerChoice2").exists()) {
+      // local logging of the result
+      game.playerChoice2 = snap.val().playerChoice2;
+      console.log("player 2 choice is: ", game.playerChoice2);
+      console.log("Opposite choice is: ", game.playerChoice1);
+      if (game.playerChoice1 !== '') {
+        console.log("ready to compute results");
+        game.revealEngine();
+      }
+    };
+  });
   
+
   // choice click
   $(".list-group-item-dark").on("click", function(e) {
     console.log("in list-group-item-dark click event");
     var value = e.target.value;
     console.log("click button value: ", value);
+  if (game.youArePlayer === 1) {
+    game.playerChoice1 = value;
+    database.ref("/choice1").set({
+      playerChoice1: game.playerChoice1,
+    })
+  }   
+  else {
+    game.playerChoice2 = value;
+    database.ref("/choice2").set({
+    playerChoice2: game.playerChoice2,
+    })
+  };
+
+
   });
  
 

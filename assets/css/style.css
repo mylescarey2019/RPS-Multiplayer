@@ -19,7 +19,7 @@ body {
   padding-top: 56px;
 }
 
-#set-name-btn {
+#set-name-btn , #instruction-btn {
   margin-right: 10px
 }
 
@@ -29,16 +29,37 @@ body {
 
 h3, .card-title {
   text-align: center;
+  font-size: 36px;
+  padding: 10px;
 }
 
 #left-container-2, #right-container-2 {
   height: 145px;
   margin: 0px;
+  text-align: center;
+  font-size: 36px;
+  padding-top: 50px;
 }
 
 .card-top {
   border-bottom: 2px solid lightgray;
 }
+
+.win-state {
+  background-color: lightgreen;
+  color: red;
+}
+
+.loss-state {
+  background-color: lightcoral;
+  color: green;
+}
+
+.tie-state {
+  background-color: lightblue;
+  color: blue;
+}
+
 
 .card-bottom {
   border-top: 2px solid lightgray;
@@ -46,6 +67,9 @@ h3, .card-title {
 
 #results { 
   height: 308px;
+  text-align: center;
+  font-size: 40px;
+  padding-top: 50px;
 }
 
 .list-flush {

@@ -41,6 +41,7 @@
               <input id="name-input" class="form-control mr-sm-2" type="text" placeholder="Name" aria-label="Text">
               <button id="set-name-btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Start</button>
               <button id="instruction-btn" type="button" class="btn btn-outline-info">Instructions</button>
+              <button id="clear-btn" type="button" class="btn btn-outline-danger">Clear</button>
             </form>
             </div>
           </div>
@@ -59,7 +60,7 @@
         <div class="row">
           <div class="col-sm-4">
               <div class="card">  
-                  <div class="card-body card-top">
+                  <div id="left-card-top" class="card-body card-top">
                     <h5 id="left-player" class="card-title">Waiting for Player</h5>
                   </div>
                   <div id="left-container" class="hide-container">
@@ -83,14 +84,14 @@
           <div class="col-sm-4">
               <div id="results" class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Results</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title"></h5>
+                    <p id="turn-result" class="card-text"></p>
                   </div>
               </div>
           </div>
           <div class="col-sm-4">
               <div class="card">
-                  <div class="card-body card-top">
+                  <div id="right-card-top" class="card-body card-top">
                     <h5 id="right-player" class="card-title">Waiting for Player</h5>
                   </div>
                   <div id="right-container" class="hide-container">

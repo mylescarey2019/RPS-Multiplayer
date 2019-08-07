@@ -72,6 +72,7 @@ Timer usage for delay after showing result.
     1. Variables
         1. TBD
         2. Firebase key/values
+            0. game state
             1. player one name
             2. player two name
             3. player one choice
