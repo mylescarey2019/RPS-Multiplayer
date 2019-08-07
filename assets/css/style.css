@@ -7,7 +7,10 @@ RPSLK - CSS
 #name-input {
   width: 100px;
 }
-
+ 
+* {
+  box-sizing: border-box;
+}
 
 body {
 
@@ -17,6 +20,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-top: 56px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
 }
 
 #set-name-btn , #instruction-btn {
@@ -29,8 +34,8 @@ body {
 
 h3, .card-title {
   text-align: center;
-  font-size: 36px;
-  padding: 10px;
+  font-size: 30px;
+  padding: 6px;
 }
 
 #left-container-2, #right-container-2 {
@@ -41,11 +46,18 @@ h3, .card-title {
   padding-top: 50px;
 }
 
+.card {
+  background-color: #e9ecef;
+}
 .card-top {
-  border-bottom: 2px solid lightgray;
+  /* border-bottom: 2px solid lightgray; */
+  background-color: #343a40;
+  color: white;
 }
 
-.win-state {
+
+
+/* .win-state {
   color: green;
 }
 
@@ -55,97 +67,92 @@ h3, .card-title {
 
 .tie-state {
   color: lightblue;
-}
+} */
+
+/* .list-buttons {
+  color: white;
+  background-color: #56606a;
+  /* height: 29px; */
+
 
 .win-state-2 {
- background-color: lightgreen;
+ /* background-color: lightgreen; */
+ border: 8px  solid #28a744;
 }
 
 .loss-state-2 {
-  background-color: lightcoral;
+  /* background-color: lightcoral; */
+  border: 8px solid #dc3545;
 }
 
 .tie-state-2 {
-  background-color: lightblue;
+  /* background-color: lightblue; */
+  border: 8px solid #189eb4;
 }
 
 #left-score, #right-score {
   text-align: center;
+  height: 42px;
+  padding: 10px;
   
 }
 .card-bottom {
-  border-top: 2px solid lightgray;
+  /* border-top: 2px solid lightgray; */
+  /* border-bottom: 2px solid lightgray; */
+  background-color: #343a40;
+  color: white;
 }
 
 #results { 
-  height: 308px;
+  height: 291px;
   text-align: center;
   font-size: 40px;
-  padding-top: 50px;
+  padding-top: 120px;
 }
 
 .list-flush {
   text-align: center;
 }
-/* #search-input {
-  width: 120px;
+
+#msg-box {
+  margin-top: 40px;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: .25rem;
 }
 
-.dropdown-menu {
-  height: auto;
-  max-height: 200px;
-  overflow-x: scroll;
-}
-
-
-.container { 
-  width: 80%;
-  height: auto;
-  max-width: 500px;
-  margin-top: 150px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-
-
-.slide-window-show {
-  visibility: visible;
-  border: solid 2px white;
-  padding: 0px;
-}
-
-.slide-window-hide {
+.hide-msg-box {
   visibility: hidden;
-  border: none; 
 }
 
-#footer-text {
-  color: #ffffff;
-  font-size: 10px; 
-} */
+footer {
+  height: 56px;
+}
+
+h3 {
+  text-align: center;
+
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+
 
 /* First breakpoint - these rules take effect at maximum browser's width
    of 575px */
-   /* @media screen and (max-width: 575px) {
+   @media screen and (max-width: 575px) {
   
-    #search-input {
-      margin-right: 10px;
+    body {
+      padding-top: 96px;
     }
 
-    #giphy-logo {
-      width: 150px;
-      height: 20px;
+    #inner-container-2 {
+      font-size: 12px;
     }
 
-    #footer-text {
-      font-size: 8px;
+    h1.display-4 {
+      font-size: 36px;
     }
-
-    #footer-bar {
-      padding: 8px 4px;
-    }
-}
-   */
+  }
 

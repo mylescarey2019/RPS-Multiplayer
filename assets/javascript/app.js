@@ -99,7 +99,7 @@ $(document).ready(function(){
   // '.info/connected' is a boolean value, true if the client is connected and false if they are not.
   var connectedRef = database.ref(".info/connected");
 
-  var intermissionTimeConstant = 5;
+  var intermissionTimeConstant = 8;
   var intermissionTime = intermissionTimeConstant;
 
   
@@ -290,10 +290,10 @@ $(document).ready(function(){
           
           this.playerWins1++;
           this.playerLosses2++;
-          $("#left-card-top").addClass("win-state");
-          $("#right-card-top").addClass("loss-state");
-          $("#left-container-2").addClass("win-state-2");
-          $("#right-container-2").addClass("loss-state-2");
+          // $("#left-card-top").addClass("win-state");
+          // $("#right-card-top").addClass("loss-state");
+          $("#left-card").addClass("win-state-2");
+          $("#right-card").addClass("loss-state-2");
         }
           break;
           
@@ -301,10 +301,10 @@ $(document).ready(function(){
           console.log("in TIE");
           
           this.playerTies++;
-          $("#left-card-top").addClass("tie-state");
-          $("#right-card-top").addClass("tie-state");
-          $("#left-container-2").addClass("tie-state-2");
-          $("#right-container-2").addClass("tie-state-2");
+          // $("#left-card-top").addClass("tie-state");
+          // $("#right-card-top").addClass("tie-state");
+          $("#left-card").addClass("tie-state-2");
+          $("#right-card").addClass("tie-state-2");
         }
           break;
           
@@ -312,10 +312,10 @@ $(document).ready(function(){
           console.log("in LOSS");
           this.playerLosses1++;
           this.playerWins2++;
-          $("#left-card-top").addClass("loss-state");
-          $("#right-card-top").addClass("win-state");
-          $("#left-container-2").addClass("loss-state-2");
-          $("#right-container-2").addClass("win-state-2");
+          // $("#left-card-top").addClass("loss-state");
+          // $("#right-card-top").addClass("win-state");
+          $("#left-card").addClass("loss-state-2");
+          $("#right-card").addClass("win-state-2");
         }
           break;
 
@@ -348,18 +348,18 @@ $(document).ready(function(){
       game.playerChoice1 = "";
       game.playerChoice2 = "";
       $("#results").text("Play Again");
-      $("#left-card-top").removeClass("win-state");
-      $("#left-card-top").removeClass("loss-state");
-      $("#left-card-top").removeClass("tie-state");
-      $("#right-card-top").removeClass("win-state");
-      $("#right-card-top").removeClass("loss-state");
-      $("#right-card-top").removeClass("tie-state");
-      $("#left-container-2").removeClass("win-state-2");
-      $("#left-container-2").removeClass("loss-state-2");
-      $("#left-container-2").removeClass("tie-state-2");
-      $("#right-container-2").removeClass("win-state-2");
-      $("#right-container-2").removeClass("loss-state-2");
-      $("#right-container-2").removeClass("tie-state-2");
+      // $("#left-card-top").removeClass("win-state");
+      // $("#left-card-top").removeClass("loss-state");
+      // $("#left-card-top").removeClass("tie-state");
+      // $("#right-card-top").removeClass("win-state");
+      // $("#right-card-top").removeClass("loss-state");
+      // $("#right-card-top").removeClass("tie-state");
+      $("#left-card").removeClass("win-state-2");
+      $("#left-card").removeClass("loss-state-2");
+      $("#left-card").removeClass("tie-state-2");
+      $("#right-card").removeClass("win-state-2");
+      $("#right-card").removeClass("loss-state-2");
+      $("#right-card").removeClass("tie-state-2");
 
       // clear choices from database
       var firebaseChoice1 = database.ref("/choice1");
@@ -430,6 +430,8 @@ $(document).ready(function(){
     var name = $("#name-input").val().trim();
     console.log("right now i am player: ", game.youArePlayer);
  
+    $("#msg-box").addClass("hide-msg-box");
+
     if (game.youArePlayer === 0) {
       game.youArePlayer = 1;
       game.playerName1 = name;
@@ -520,6 +522,19 @@ $(document).ready(function(){
 
 
 
+  // // When the client's connection state changes...
+  // connectedRef.on("value", function(snap) {
+  //   console.log("in connectedRef.value-event");
+  //   // If they are connected..
+  //   if (snap.val()) {
+  //     // Add user to the connections list.
+  //     var con = connectionsRef.push(true);
+  //     // Remove user from the connection list when they disconnect.
+  //     con.onDisconnect().remove();
+  //   }
+  // });
+
+
   // When the client's connection state changes...
   connectedRef.on("value", function(snap) {
     console.log("in connectedRef.value-event");
@@ -532,14 +547,23 @@ $(document).ready(function(){
     }
   });
 
-
-
   // When first loaded or when the connections list changes...
   connectionsRef.on("value", function(snapshot) {
 
     // Display the viewer count in the html.
     // The number of online users is the number of children in the connections list.
-    $("#msg-box").text(snapshot.numChildren());
+    // $("#msg-box").text(snapshot.numChildren());
+    $("#connect-count").text("connections: " + snapshot.numChildren());
+    if (snapshot.numChildren() === 1) {
+      console.log("CLEAR DATA FROM FIREBASE");
+      
+      var firebaseGame = database.ref("/game");
+      firebaseGame.remove();
+      var firebaseChoice1 = database.ref("/choice1");
+      firebaseChoice1.remove();
+      var firebaseChoice2 = database.ref("/choice2");
+      firebaseChoice2.remove();
+    }
   });
 
 

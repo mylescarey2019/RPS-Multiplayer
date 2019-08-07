@@ -41,7 +41,7 @@
               <input id="name-input" class="form-control mr-sm-2" type="text" placeholder="Name" aria-label="Text">
               <button id="set-name-btn" class="btn btn-outline-success my-2 my-sm-0" type="submit">Start</button>
               <button id="instruction-btn" type="button" class="btn btn-outline-info">Instructions</button>
-              <button id="clear-btn" type="button" class="btn btn-outline-danger">Clear</button>
+             <!-- <button id="clear-btn" type="button" class="btn btn-outline-danger">Clear</button> -->
             </form>
             </div>
           </div>
@@ -50,17 +50,17 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <div class="jumbotron jumbotron-fluid">
+            <div id="msg-box" class="jumbotron jumbotron-fluid">
                 <div class="container">
-                  <h3 id="msg-box" class="display-4">Instructional Messages Go</h3>
+                  <h6 class="display-4">Enter your name to play</h6>
                 </div>
               </div>
             </div>  
         </div>
         <div class="row">
           <div class="col-sm-4">
-              <div class="card">  
-                  <div id="left-card-top" class="card-body card-top">
+              <div id="left-card" class="card">  
+                  <div class="card-body card-top">
                     <h5 id="left-player" class="card-title">Waiting for Player</h5>
                   </div>
                   <div id="left-container" class="hide-container">
@@ -76,8 +76,8 @@
                       <p id="left-container-2">
                       </p>
                     </div>
-                  <div class="card-body card-bottom">
-                    <p id="left-score"></p>
+                  <div id="left-score"class="card-body card-bottom">
+                    <p></p>
                   </div>
               </div>
           </div>
@@ -90,8 +90,8 @@
               </div>
           </div>
           <div class="col-sm-4">
-              <div class="card">
-                  <div id="right-card-top" class="card-body card-top">
+              <div id="right-card" class="card">
+                  <div  class="card-body card-top">
                     <h5 id="right-player" class="card-title">Waiting for Player</h5>
                   </div>
                   <div id="right-container" class="hide-container">
@@ -107,8 +107,8 @@
                       <p id="right-container-2">
                       </p>
                     </div>
-                    <div class="card-body card-bottom">
-                      <p id="right-score"></p>
+                    <div id="right-score" class="card-body card-bottom">
+                      <p></p>
                   </div>
               </div>
           </div> 
@@ -122,6 +122,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
+                    <img src="assets/images/1000px-Rock_Paper_Scissors_Lizard_Spock_en.svg.png" width="500" height="455" alt="rock-paper-scissors-lizard-spock">
                     <p>1. Rock  - crushes Lizard, crushes Scissors</p>
                     <p>2. Paper - covers Rock, disproves Spock</p>
                     <p>3. Scissors - cuts Paper, decapitates Lizard</p>
@@ -160,7 +161,22 @@
 
               </div> <!-- end of row-->
           </div> <!-- end of container-->
-
+          <footer id="footer-bar" class="navbar fixed-bottom navbar-light bg-dark">
+            <h3 id="connect-count"></h3>
+            <!-- <img id="giphy-logo" src="assets/images/PoweredBy_200px-Black_HorizLogo.png" alt="powered by giphy">
+            <span id="footer-text" class="navbar-text">
+                photo by
+                <a style="background-color:#3d444b;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont,
+                &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, 
+                Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" 
+                href="https://unsplash.com/@otoriii?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" 
+                target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from David Emrich">
+                <span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg"
+                  style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><
+                  title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path>
+                 </svg></span><span style="display:inline-block;padding:2px 3px">David Emrich</span></a>
+            </span> -->
+          </footer>
     <!-- Main program body in javascript -->
     <script src="assets/javascript/app.js"></script>
 
