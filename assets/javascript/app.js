@@ -170,7 +170,7 @@ $(document).ready(function(){
   // '.info/connected' is a boolean value, true if the client is connected and false if they are not.
   var connectedRef = database.ref(".info/connected");
 
-  var intermissionTimeConstant = 3;
+  var intermissionTimeConstant = 5;
   var intermissionTime = intermissionTimeConstant;
 
   
