@@ -117,8 +117,8 @@ $(document).ready(function(){
     // local variables
     gameState: "not started",
     youArePlayer: 0,
-    playerName1: "",
-    playerName2: "",
+    playerName1: "Waiting for Player",
+    playerName2: "Waiting for Player",
     playerChoice1: "",
     playerChoice2: "",
     playerWins1: 0,
@@ -132,12 +132,46 @@ $(document).ready(function(){
     
   }
 
+  // user interface object
+  var userInterface = {
+    // local variables
+
+    // methods
+    // show the left move options
+    leftChoices: function() {
+      console.log("in userInterface.showChoices");
+      $("#left-container").show();
+      $("#left-container-2").hide();
+      $("#right-container").hide();
+      $("#right-container-2").show();
+    },
+
+    // hide the right move options
+    rightChoices: function() {
+      console.log("in userInterface.hideChoices");
+      $("#left-container").hide();
+      $("#left-container-2").show();
+      $("#right-container").show();
+      $("#right-container-2").hide();
+    },
+
+    // hide the move options
+    hideChoices: function() {
+      console.log("in userInterface.hideChoices");
+      $("#left-container").hide();
+      $("#left-container-2").show();
+      $("#right-container").hide();
+      $("#right-container-2").show();
+    }
+
+  }
   
   // ----------------------------------------------------------------------------
   //  START OF PROGRAM FLOW
   // ----------------------------------------------------------------------------
 
    console.log("Starting the program");
+   userInterface.hideChoices();
 
    
   // ----------------------------------------------------------------------------
@@ -156,7 +190,7 @@ $(document).ready(function(){
       game.playerName1 = name;
       database.ref("/game").set({
         playerName1: game.playerName1,
-        playerName2: ""
+        playerName2: "Waiting for Player"
       });
       $("#left-player").text(name);
     }
@@ -168,6 +202,7 @@ $(document).ready(function(){
         playerName2: game.playerName2
       });
       $("#right-player").text(name);
+
     };
 
     console.log("right now i am player: ", game.youArePlayer);
@@ -203,12 +238,17 @@ $(document).ready(function(){
       if (game.youArePlayer === 1) { // first to enter a name 
         console.log("this is player 1")
         $("#right-player").text(snap.val().playerName2);
+        game.playerName2 = snap.val().playerName2;
+        // if (game.playerName2 !== "Waiting for Player") {
+        //   userInterface.showChoices();
+        // }
       }
       else {  // player 0 becoming player 1
         console.log("this is player 2")
         game.youArePlayer = 2;
         $("#left-player").text(snap.val().playerName1);
       };
+
 
       // console.log("if you haven't entered name yet then you will be player 2");
       // // you are player two now, but still have to enter you name
@@ -217,7 +257,19 @@ $(document).ready(function(){
       // };
 
       game.playerName1 = snap.val().playerName1;
+      console.log(game.playerName1);
+      console.log(game.playerName2);
+      
+      if (game.playerName1 !== "Waiting for Player"
+      && game.playerName2 !== "Waiting for Player") {
+        if (game.youArePlayer === 1) {
+          userInterface.leftChoices();
+        }
+        else {
+          userInterface.rightChoices();
+        }
       };
+    };
 
 
 

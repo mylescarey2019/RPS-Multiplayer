@@ -30,6 +30,27 @@ body {
 h3, .card-title {
   text-align: center;
 }
+
+#left-container-2, #right-container-2 {
+  height: 145px;
+  margin: 0px;
+}
+
+.card-top {
+  border-bottom: 2px solid lightgray;
+}
+
+.card-bottom {
+  border-top: 2px solid lightgray;
+}
+
+#results { 
+  height: 308px;
+}
+
+.list-flush {
+  text-align: center;
+}
 /* #search-input {
   width: 120px;
 }
