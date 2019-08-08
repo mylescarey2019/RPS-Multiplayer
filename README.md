@@ -32,7 +32,7 @@ Results revealed:
 ### Executing program
 
 * open in browser and follow instructions
-*   1. enter player name
+    1. enter player name
     2. wait for your opponent to sign on
     3. follow prompts/messages in central message box
     4. when your turn click button choice - rules below
@@ -43,11 +43,19 @@ Results revealed:
         5. Spock - smashes Scissors, vaporizes Rock
     5. click Instructions button in header bar for modal with instuctions    
 
-    
 
 ## Help
 
 For further development details see [UseCases and Psuedo Code](UseCases-PsuedoCode.md)
+
+## Enhancements 
+
+* List of possible enhancements/changes
+    1. chat function
+    2. use modal for name input instead of input field
+    3. improve UX layout on mobile form factors
+    4. improve overall asthetics/theme
+
 
 ## Authors
 
