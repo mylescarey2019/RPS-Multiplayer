@@ -10,6 +10,10 @@ of Rock Paper Scissors Lizard Spock, a variation on the classic Rock-Paper-Sciss
 
 This page was created using HTML, CSS, Bootstrap, Javascript, JQuery and Firebase.
 
+## Deployed Page:
+https://mylescarey2019.github.io/RPS-Multiplayer/
+
+
 Waiting for players to connect:
 
 ![RPSLK-connect](assets/images/wireframe1.png)
