@@ -3,7 +3,7 @@
 RPSLK - Multiplayer
 
 ## Description
- 
+
 This game uses Firebase cloud storage database to help manage a two browser game
 of Rock Paper Scissors Lizard Spock, a variation on the classic Rock-Paper-Scissors game. 
 
@@ -12,6 +12,12 @@ This page was created using HTML, CSS, Bootstrap, Javascript, JQuery and Firebas
 
 ## Deployed Page:
 https://mylescarey2019.github.io/RPS-Multiplayer/
+
+## Play Example:
+
+![play-example](./assets/images/play-example.gif)
+
+## Screen Captures:
 
 
 Waiting for players to connect:
@@ -67,7 +73,7 @@ Myles Carey
 mylescarey2019@gmail.com 
 
 ## Version History
- 
+
 * 0.1
     * Initial Release
 
